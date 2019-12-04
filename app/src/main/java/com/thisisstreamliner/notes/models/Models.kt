@@ -1,4 +1,4 @@
-package com.thisisstreamliner.notes
+package com.thisisstreamliner.notes.models
 
 data class Task @JvmOverloads constructor(
     var title: String,
