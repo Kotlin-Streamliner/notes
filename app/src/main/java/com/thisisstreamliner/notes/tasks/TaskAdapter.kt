@@ -20,6 +20,10 @@ class TaskAdapter(
 
         override fun onBind(item: Task) {
             view.titleView.text = item.title
+
+            item.todos.forEach { todo ->
+                LayoutInflater.from(view.context).inflate(R.layout.todo_view, view.todoContainer, false)
+            }
         }
     }
 
