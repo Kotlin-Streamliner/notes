@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.todo_view.view.*
 class TodoView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int
+    defStyleAttr: Int = 1
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     fun initView(todo: Todo) {
