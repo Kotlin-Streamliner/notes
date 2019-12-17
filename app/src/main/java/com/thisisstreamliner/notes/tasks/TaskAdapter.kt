@@ -1,6 +1,5 @@
 package com.thisisstreamliner.notes.tasks
 
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thisisstreamliner.notes.R
 import com.thisisstreamliner.notes.foundation.BaseRecyclerAdapter
 import com.thisisstreamliner.notes.models.Task
-import com.thisisstreamliner.notes.views.TodoView
-import kotlinx.android.synthetic.main.item_task.view.*
-import kotlinx.android.synthetic.main.todo_view.view.*
+import com.thisisstreamliner.notes.views.TaskView
 
 class TaskAdapter(
     taskList: MutableList<Task> = mutableListOf()
@@ -22,14 +19,7 @@ class TaskAdapter(
     class ViewHolder(view: View) : BaseViewHolder<Task>(view) {
 
         override fun onBind(item: Task) {
-            view.titleView.text = item.title
-
-            item.todos.forEach { todo ->
-                (LayoutInflater.from(view.context).inflate(R.layout.todo_view, view.todoContainer, false) as TodoView).apply {
-                    initView(todo)
-                    view.todoContainer.addView(this)
-                }
-            }
+            (view as TaskView).initView(item)
         }
     }
 
