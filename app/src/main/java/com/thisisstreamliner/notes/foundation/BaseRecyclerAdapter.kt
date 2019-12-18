@@ -11,7 +11,7 @@ abstract class BaseRecyclerAdapter<T>(
     override fun getItemCount(): Int = masterList.size + 1
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is TaskAdapter.AddButtonViewHolder) holder.onBind(Unit)
+        if (holder is AddButtonViewHolder) holder.onBind(Unit)
         else (holder as BaseViewHolder<T>).onBind(masterList[position - 1])
     }
 

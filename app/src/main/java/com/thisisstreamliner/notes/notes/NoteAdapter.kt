@@ -16,8 +16,9 @@ class NoteAdapter(
 ): BaseRecyclerAdapter<Note>(noteList) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        if (viewType == TYPE_ADD_BUTTON) AddButtonViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_add_button, parent, false))
-        else  NoteViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false))
+        if (viewType == TYPE_INFO) NoteViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false))
+        else AddButtonViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_add_button, parent, false))
+
 
     class NoteViewHolder(view: View) : BaseViewHolder<Note>(view) {
 
