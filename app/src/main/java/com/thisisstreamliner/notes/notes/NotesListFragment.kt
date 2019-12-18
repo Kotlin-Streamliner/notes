@@ -1,6 +1,7 @@
 package com.thisisstreamliner.notes.notes
 
 
+import android.content.Context
 import android.os.Bundle
 
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.thisisstreamliner.notes.R
 import com.thisisstreamliner.notes.models.Note
+import com.thisisstreamliner.notes.navigation.TouchActionDelegate
 import kotlinx.android.synthetic.main.fragment_tasks_list.*
 
 /**
@@ -20,6 +22,16 @@ import kotlinx.android.synthetic.main.fragment_tasks_list.*
  * create an instance of this fragment.
  */
 class NotesListFragment : Fragment() {
+
+    lateinit var touchActionDelegate: TouchActionDelegate
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        context?.let {
+            if (it is TouchActionDelegate) touchActionDelegate = it
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +52,7 @@ class NotesListFragment : Fragment() {
         val adapter = NoteAdapter(mutableListOf(
             Note("Note description 1"),
             Note("Note description 2")
-        ))
+        ), touchActionDelegate)
         recyclerView.adapter = adapter
     }
 
